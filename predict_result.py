@@ -57,14 +57,14 @@ def df_return(df_res_predict, pred_prob, pred_res):
 def predict_result(GameDate01, GameDate02):
     
     # conexão com o BD Premier League - AWS
-    # dbname = 'premierleague.cqoq1gvjbsxj.us-east-2.rds.amazonaws.com'
-    # db_PremierLeague = sqlite3.connect(dbname)
+    dbname = 'premierleague.cqoq1gvjbsxj.us-east-2.rds.amazonaws.com'
+    db_PremierLeague = sqlite3.connect(dbname)
 
-    # query = """ SELECT * FROM PremierLeague_Info"""
+    query = """ SELECT * FROM PremierLeague_Info"""
     
-    # df_result = pd.read_sql(query, db_PremierLeague)
+    df_result = pd.read_sql(query, db_PremierLeague)
 
-    df_result = pd.read_csv('PremierLeague_Info.csv')
+    # df_result = pd.read_csv('PremierLeague_Info.csv')
 
     df_res_predict = df_result.loc[(df_result['Game_Date']>=GameDate01) & (df_result['Game_Date']<=GameDate02)]
         
