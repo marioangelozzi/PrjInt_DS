@@ -1,1 +1,1 @@
-proc - web: gunicorn -b : predict_result:app
+web: gunicorn -b : predict_result:app
