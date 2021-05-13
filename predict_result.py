@@ -57,13 +57,15 @@ def df_return(df_res_predict, pred_prob, pred_res):
 def predict_result(GameDate01, GameDate02):
     
     # conexão com o BD Premier League - AWS
-    dbname = 'premierleague.cqoq1gvjbsxj.us-east-2.rds.amazonaws.com'
-    db_PremierLeague = sqlite3.connect(dbname)
+    # dbname = 'premierleague.cqoq1gvjbsxj.us-east-2.rds.amazonaws.com'
+    # db_PremierLeague = sqlite3.connect(dbname)
 
-    query = """ SELECT * FROM PremierLeague_Info"""
+    # query = """ SELECT * FROM PremierLeague_Info"""
     
-    df_result = pd.read_sql(query, db_PremierLeague)
-    
+    # df_result = pd.read_sql(query, db_PremierLeague)
+
+    df_result = pd.read_csv('PremierLeague_Info.csv')
+
     df_res_predict = df_result.loc[(df_result['Game_Date']>=GameDate01) & (df_result['Game_Date']<=GameDate02)]
         
     # Carregar modelo
@@ -94,7 +96,6 @@ def my_form_post():
 
 
 if __name__ == '__main__':
-    # port = int(os.environ.get("PORT", 5001))
-    # app.run(host='0.0.0.0', port=port)
+    # app.run(debug=True, port=5000)
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
